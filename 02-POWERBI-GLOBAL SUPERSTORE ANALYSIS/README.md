@@ -1,4 +1,4 @@
-## BI Report: Sales Dashboard Analysis
+## GLOBAL SUPERSTORE ANALYSIS
 
 ![Sales Dashboard](./img/sales_dashboard.png)
 ![Sales Dashboard](./img/rfm_segment.png)
