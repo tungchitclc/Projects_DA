@@ -50,5 +50,5 @@ Bộ dữ liệu chứa hơn 10,000 giao dịch, bao gồm:
 
 ---
 
-> Dự án thực hành trực quan trong môn hoc Bussiness Intelligence
+> Dự án thực hành trực quan trong môn học Bussiness Intelligence
 
