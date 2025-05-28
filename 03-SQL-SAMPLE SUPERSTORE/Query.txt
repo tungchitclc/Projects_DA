@@ -1,0 +1,38 @@
+/* Top 5 khách hàng mua nhiều nhất */
+SELECT 
+    [Customer_ID],   
+    SUM(Sales) AS Total_Sales
+FROM sample_superstore_1000
+GROUP BY [Customer_ID]
+ORDER BY Total_Sales DESC
+LIMIT 5;
+
+/*Xếp hạng khách hàng theo tổng doanh thu trong từng Segments*/
+SELECT 
+    [Segment],
+    [Customer_Name],
+    SUM(Sales) AS Total_Sales,
+    RANK() OVER (
+        PARTITION BY [Segment]
+        ORDER BY SUM(Sales) DESC
+    ) AS Sales_Rank
+FROM sample_superstore_1000
+GROUP BY [Segment], [Customer_Name]
+ORDER BY [Segment], Sales_Rank;
+
+/*Danh mục sản phẩm nào mang lại tỷ suất lợi nhuận thấp nhất */
+SELECT 
+    [Category],
+    [Sub-Category],
+    SUM(Profit) AS Total_Profit,
+    SUM(Sales) AS Total_Sales,
+    ROUND(SUM(Profit) * 1.0 / NULLIF(SUM(Sales), 0), 4) AS Profit_Ratio
+FROM sample_superstore_1000
+GROUP BY [Category], [Sub-Category]
+ORDER BY Profit_Ratio ASC;
+
+/*Doanh thu theo từng danh mục sản phẩm*/
+SELECT Category, SUM(Sales) AS Total_Sales
+FROM sample_superstore_1000
+GROUP BY Category
+ORDER BY Total_Sales DESC;
